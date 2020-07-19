@@ -1,0 +1,11 @@
+[package]
+name = "linfa-preprocess"
+version = "0.1.0"
+authors = ["jtrawinski <jtrawinski4@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ndarray = { version = "0.13", features = ["rayon", "serde", "approx"] }
+ndarray-stats = "0.3"
