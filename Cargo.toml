@@ -1,11 +1,19 @@
 [package]
-name = "linfa-preprocess"
+name = "linfa-preprocessing"
 version = "0.1.0"
 authors = ["jtrawinski <jtrawinski4@gmail.com>"]
 edition = "2018"
+license = "MIT/Apache-2.0"
+description = "A data preprocessing library in the vein of Python's sklearn.preprocessing."
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+repository = "https://github.com/jtrawinski/linfa-preprocessing"
+readme = "README.md"
+
+keywords = ["machine-learning", "linfa", "data", "preprocessing"]
+categories = ["algorithms", "mathematics", "science"]  
 
 [dependencies]
-ndarray = { version = "0.13", features = ["rayon", "serde", "approx"] }
-ndarray-stats = "0.3"
+ndarray = { version = "0.13", features = ["approx"] }
+
+[dev-dependencies]
+approx = "0.3"
