@@ -6,6 +6,8 @@ use std::fmt;
 #[derive(Clone, PartialEq, Default)]
 /// StandardScalar standardizes features by subtracting the mean and dividing by the sample standard deviation.
 /// This results in features with zero mean and unit variance.
+// TODO: Allow computation without mean (just scale) or without stddev (just center)
+// TODO: Allow for online computation (partial_fit)
 pub struct StandardScaler {
     means: Array1<f64>,
     stds: Array1<f64>,
@@ -48,6 +50,7 @@ impl Transformer for StandardScaler {
         let stds = obs.std_axis(Axis(0), 1.);
         if stds.iter().any(|std| *std == 0.) {
             // TODO: Tell user which column(s) have stddev of zero.
+            // Should this panic or deal with the error in another way?
             panic!("A column has a standard deviation of zero. Cannot standardize due to divison by zero.");
         }
         StandardScaler {
@@ -107,11 +110,7 @@ impl Transformer for StandardScaler {
 
 impl fmt::Display for StandardScaler {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "Means: {}\nStds: {}",
-            self.means, self.stds
-        )
+        write!(f, "Means: {}\nStds: {}", self.means, self.stds)
     }
 }
 
