@@ -14,6 +14,7 @@ categories = ["algorithms", "mathematics", "science"]
 
 [dependencies]
 ndarray = { version = "0.13", features = ["approx"] }
+ndarray-stats = "0.3"
 
 [dev-dependencies]
 approx = "0.3"

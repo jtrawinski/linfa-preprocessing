@@ -78,7 +78,8 @@ impl Transformer for StandardScaler {
     /// assert_abs_diff_eq!(standardized, array![[0.707107, -0.707107], [-0.707107, 0.707107]], epsilon=1e-5);
     /// ```
     ///
-    /// Standardization is calculated as z = (x - m) / s where z is the resulting standardized feature, m is the original feature mean and s is the original feature sample standard deviation.
+    /// Standardization is calculated as z = (x - m) / s where z is the resulting standardized feature,
+    /// m is the original feature mean and s is the original feature sample standard deviation.
     fn transform(&self, obs: &ArrayBase<impl Data<Elem = f64>, Ix2>) -> Array2<f64> {
         (obs - &self.means) / &self.stds
     }
