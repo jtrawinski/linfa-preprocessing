@@ -1,6 +1,5 @@
+pub use super::transformer::Transformer;
 use ndarray::{Array1, Array2, ArrayBase, Axis, Data, Ix2};
-
-use crate::transformer::Transformer;
 use std::fmt;
 
 #[derive(Clone, PartialEq, Default)]
@@ -30,8 +29,7 @@ impl Transformer for StandardScaler {
     ///
     /// ```
     /// use ndarray::array;
-    /// use linfa_preprocessing::standard_scaler::StandardScaler;
-    /// use linfa_preprocessing::transformer::Transformer;
+    /// use linfa_preprocessing::transformers::{Transformer, StandardScaler};
     /// use approx::assert_abs_diff_eq;
     ///
     /// let data = array![[2., 0.], [0., 2.]];
@@ -67,8 +65,7 @@ impl Transformer for StandardScaler {
     ///
     /// ```
     /// use ndarray::array;
-    /// use linfa_preprocessing::standard_scaler::StandardScaler;
-    /// use linfa_preprocessing::transformer::Transformer;
+    /// use linfa_preprocessing::transformers::{Transformer, StandardScaler};
     /// use approx::assert_abs_diff_eq;
     ///
     /// let data = array![[2., 0.], [0., 2.]];
@@ -92,8 +89,7 @@ impl Transformer for StandardScaler {
     ///
     /// ```
     /// use ndarray::array;
-    /// use linfa_preprocessing::standard_scaler::StandardScaler;
-    /// use linfa_preprocessing::transformer::Transformer;
+    /// use linfa_preprocessing::transformers::{Transformer, StandardScaler};
     /// use approx::assert_abs_diff_eq;
     ///
     /// let data = array![[2., 0.], [0., 2.]];

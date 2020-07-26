@@ -1,4 +1,4 @@
-use crate::transformer::Transformer;
+use crate::transformers::transformer::Transformer;
 use ndarray::{Array1, Array2, ArrayBase, Axis, Data, Ix2};
 use ndarray_stats::QuantileExt;
 
@@ -31,14 +31,12 @@ impl Transformer for MinMaxScaler {
     ///
     /// ```
     /// use ndarray::array;
-    /// use linfa_preprocessing::min_max_scaler::MinMaxScaler;
-    /// use linfa_preprocessing::transformer::Transformer;
-    /// use approx::assert_abs_diff_eq;
+    /// use linfa_preprocessing::transformers::{Transformer, MinMaxScaler};
     ///
     /// let data = array![[1., 3., 2.], [5., 2., 1.]];
     /// let mms = MinMaxScaler::fit(&data);
-    /// assert_abs_diff_eq!(*mms.min(), array![1., 2., 1.]);
-    /// assert_abs_diff_eq!(*mms.max(), array![5., 3., 2.]);
+    /// assert_eq!(*mms.min(), array![1., 2., 1.]);
+    /// assert_eq!(*mms.max(), array![5., 3., 2.]);
     /// ```
     fn fit(obs: &ArrayBase<impl Data<Elem = f64>, Ix2>) -> MinMaxScaler {
         MinMaxScaler {
@@ -58,8 +56,7 @@ impl Transformer for MinMaxScaler {
     ///
     /// ```
     /// use ndarray::array;
-    /// use linfa_preprocessing::min_max_scaler::MinMaxScaler;
-    /// use linfa_preprocessing::transformer::Transformer;
+    /// use linfa_preprocessing::transformers::{Transformer, MinMaxScaler};
     ///
     /// let data = array![[-1., 2.], [-0.5, 6.], [0., 10.], [1., 18.]];
     /// let mms = MinMaxScaler::fit(&data);
@@ -82,8 +79,8 @@ impl Transformer for MinMaxScaler {
     ///
     /// ```
     /// use ndarray::array;
-    /// use linfa_preprocessing::min_max_scaler::MinMaxScaler;
-    /// use linfa_preprocessing::transformer::Transformer;
+    /// use linfa_preprocessing::transformers::{Transformer, MinMaxScaler};
+    ///
     /// let data = array![[-1., 2.], [-0.5, 6.], [0., 10.], [1., 18.]];
     /// let mms_data = MinMaxScaler::fit_transform(&data);
     /// assert_eq!(
@@ -99,14 +96,14 @@ impl Transformer for MinMaxScaler {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use approx::assert_abs_diff_eq;
     use ndarray::array;
+
     #[test]
     fn fit_test() {
         let data = array![[1., 3., 2.], [5., 2., 1.]];
         let mms = MinMaxScaler::fit(&data);
-        assert_abs_diff_eq!(*mms.min(), array![1., 2., 1.]);
-        assert_abs_diff_eq!(*mms.max(), array![5., 3., 2.]);
+        assert_eq!(*mms.min(), array![1., 2., 1.]);
+        assert_eq!(*mms.max(), array![5., 3., 2.]);
     }
 
     #[test]

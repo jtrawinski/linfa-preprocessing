@@ -1,4 +1,3 @@
-extern crate ndarray;
-pub mod min_max_scaler;
-pub mod standard_scaler;
-pub mod transformer;
+pub mod transformers;
+
+// pub use transformers::*;

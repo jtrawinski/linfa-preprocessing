@@ -6,11 +6,9 @@ Once this project matures, it will become part of the [`linfa`](https://github.c
 
 ## Example
 
-
 ```rust
 use ndarray::array;
-use linfa_preprocessing::standard_scaler::StandardScaler;
-use linfa_preprocessing::transformer::Transformer;
+use linfa_preprocessing::transformers::{Transformer, StandardScaler};
 use approx::assert_abs_diff_eq;
 
 let data = array![[2., 0.],
