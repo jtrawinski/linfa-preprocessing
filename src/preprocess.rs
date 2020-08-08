@@ -201,7 +201,18 @@ mod tests {
             let data = array![[-1., 2.], [-0.5, 6.], [0., 10.], [1., 18.]];
             let min_max_std_scaled = data.min_max_scale().standard_scale().binarize(0.);
             let expected_scaled = array![[0., 0.], [0., 0.], [1., 1.], [1., 1.]];
-            assert_abs_diff_eq!(min_max_std_scaled, expected_scaled, epsilon = 1e-5);
+            assert_eq!(min_max_std_scaled, expected_scaled);
+        }
+
+        #[test]
+        fn readme_example() {
+            let data = array![[-1., 2.], [-0.5, 6.], [0., 10.], [1., 18.]];
+
+            let processed = data.min_max_scale().standard_scale().binarize(0.);
+
+            let expected = array![[0., 0.], [0., 0.], [1., 1.], [1., 1.]];
+
+            assert_eq!(processed, expected)
         }
     }
 }
